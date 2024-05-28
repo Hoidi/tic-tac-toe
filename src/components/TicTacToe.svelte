@@ -1,11 +1,10 @@
 <script lang="ts">
-	import Row from './Row.svelte';
+	import { initalGameState, type GameState } from '../types';
+	import Grid from './Grid.svelte';
+
+	let gameState: GameState = initalGameState;
 </script>
 
-<div class="bg-orange-600 min-w-40 min-h-40 max-h-96 max-h-96">
-	<div class="flex flex-col m-2">
-		<Row rownr={0}/>
-		<Row rownr={1}/>
-		<Row rownr={2}/>
-	</div>
+<div class="min-w-[30%] max-w-[300px] aspect-square border-2 rounded-md border-slate-300">
+	<Grid {gameState} />
 </div>
