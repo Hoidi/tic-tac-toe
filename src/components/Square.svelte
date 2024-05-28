@@ -10,14 +10,13 @@
 	$: squareState = gameState.squareStates[position];
 
 	const flip = () => {
-		const selectedSquare: SquareState = gameState.squareStates[position];
 		const playersSymbol: SquareState = gameState.currentPlayer;
 
-		if (selectedSquare === playersSymbol) {
+		if (squareState === playersSymbol) {
 			return;
 		}
 
-		switch (selectedSquare) {
+		switch (squareState) {
 			case 'X':
 			case 'O':
 				if (areThereEmptySquares(gameState)) {
