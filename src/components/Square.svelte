@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { areThereEmptySquares } from '../Utils';
-	import { CurrentPlayer, SquareState, type GameState } from '../types';
+	import { type GameState, type SquareState } from '../types';
 	import Empty from './squareStates/Empty.svelte';
 	import O from './squareStates/O.svelte';
 	import X from './squareStates/X.svelte';
@@ -9,27 +9,25 @@
 	export let gameState: GameState;
 
 	const flip = () => {
-		const selectedSquare = gameState.squareStates[position];
-		const playersSymbol =
-			gameState.currentPlayer === CurrentPlayer.X ? SquareState.X : SquareState.O;
+		const selectedSquare: SquareState = gameState.squareStates[position];
+		const playersSymbol: SquareState = gameState.currentPlayer;
 
 		if (selectedSquare === playersSymbol) {
 			return;
 		}
 
 		switch (selectedSquare) {
-			case SquareState.X:
-			case SquareState.O:
+			case 'X':
+			case 'O':
 				if (areThereEmptySquares(gameState)) {
 					return;
 				}
-			case SquareState.Empty:
+			case 'Empty':
 				gameState.squareStates[position] = playersSymbol;
 				break;
 		}
 
-		gameState.currentPlayer =
-			gameState.currentPlayer === CurrentPlayer.X ? CurrentPlayer.O : CurrentPlayer.X;
+		gameState.currentPlayer = gameState.currentPlayer === 'X' ? 'O' : 'X';
 	};
 
 	$: squareState = gameState.squareStates[position];
@@ -38,9 +36,9 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="w-full aspect-square" on:click={flip}>
-	{#if squareState === SquareState.X}
+	{#if squareState === 'X'}
 		<X />
-	{:else if squareState === SquareState.O}
+	{:else if squareState === 'O'}
 		<O />
 	{:else}
 		<Empty />
