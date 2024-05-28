@@ -1,2 +1,14 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import TicTacToe from "../components/TicTacToe.svelte";
+
+</script>
+
+<div class="h-screen w-screen flex justify-center items-center">
+<TicTacToe/>
+</div>
+
+<style lang="postcss">
+    :global(html) {
+        background-color: theme(colors.slate.800);
+    }
+</style>
