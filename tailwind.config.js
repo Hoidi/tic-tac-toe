@@ -6,7 +6,7 @@ export default {
       animation: {
         wiggle: 'wiggle 1s ease-in-out infinite',
         blurin: 'blurin 0.1s ease-in-out',
-        blurplace: 'blurplace 0.1s ease-in-out'
+        blurplace: 'blurplace 0.2s ease-in-out'
       },
       keyframes: {
         wiggle: {
@@ -18,8 +18,8 @@ export default {
           '100%': { filter: 'blur(4px)'}
         },
         blurplace: {
-          '0%': { filter: 'blur(4px)'},
-          '100%': { filter: 'blur(0px)'}
+          '0%': { filter: 'blur(4px) opacity(10%)'},
+          '100%': { filter: 'blur(0px) opacity(100%)'}
         }
       }
     }

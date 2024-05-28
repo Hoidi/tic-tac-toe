@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
 	import { type GameState } from '../../types';
 	import X from './X.svelte';
 	import O from './O.svelte';
