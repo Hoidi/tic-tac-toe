@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { areThereEmptySquares, hasAnyoneWon } from '../Utils';
+	import { areThereEmptySquares, hasAnyoneWon } from '../utils';
 	import { type GameState, type SquareState } from '../types';
 	import Empty from './squareStates/Empty.svelte';
 	import O from './squareStates/O.svelte';
@@ -7,6 +7,7 @@
 
 	export let position = 0;
 	export let gameState: GameState;
+	$: squareState = gameState.squareStates[position];
 
 	const flip = () => {
 		const selectedSquare: SquareState = gameState.squareStates[position];
@@ -29,6 +30,7 @@
 
 		const winningPlayer = hasAnyoneWon(gameState.squareStates);
 		if (winningPlayer) {
+			gameState.isGameOver = true;
 			setTimeout(function () {
 				alert('Player ' + winningPlayer + ' has won!');
 			}, 100);
@@ -36,6 +38,7 @@
 		}
 
 		if (!areThereEmptySquares(gameState)) {
+			gameState.isGameOver = true;
 			setTimeout(function () {
 				alert("It's a tie!");
 			}, 100);
@@ -44,8 +47,6 @@
 
 		gameState.currentPlayer = gameState.currentPlayer === 'X' ? 'O' : 'X';
 	};
-
-	$: squareState = gameState.squareStates[position];
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
