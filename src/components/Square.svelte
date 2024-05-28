@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { areThereEmptySquares } from '../Utils';
+	import { areThereEmptySquares, hasAnyoneWon } from '../Utils';
 	import { type GameState, type SquareState } from '../types';
 	import Empty from './squareStates/Empty.svelte';
 	import O from './squareStates/O.svelte';
@@ -27,6 +27,21 @@
 				break;
 		}
 
+		const winningPlayer = hasAnyoneWon(gameState.squareStates);
+		if (winningPlayer) {
+			setTimeout(function () {
+				alert('Player ' + winningPlayer + ' has won!');
+			}, 100);
+			return;
+		}
+
+		if (!areThereEmptySquares(gameState)) {
+			setTimeout(function () {
+				alert("It's a tie!");
+			}, 100);
+			return;
+		}
+
 		gameState.currentPlayer = gameState.currentPlayer === 'X' ? 'O' : 'X';
 	};
 
@@ -41,6 +56,6 @@
 	{:else if squareState === 'O'}
 		<O />
 	{:else}
-		<Empty />
+		<Empty bind:gameState />
 	{/if}
 </div>

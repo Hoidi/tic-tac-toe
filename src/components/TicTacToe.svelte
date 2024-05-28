@@ -5,6 +5,8 @@
 	let gameState: GameState = initalGameState;
 </script>
 
-<div class="min-w-[60%] max-w-[300px] aspect-square border-8 rounded-md border-slate-500 p-4">
-	<Grid {gameState} />
+<div
+	class="max-w-[69%] w-[690px] max-h-[69%] aspect-square border-8 rounded-md border-slate-500 p-4"
+>
+	<Grid bind:gameState />
 </div>

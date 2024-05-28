@@ -8,6 +8,6 @@
 
 <div class="w-full aspect-square grid grid-cols-3 grid-rows-3 gap-8">
 	{#each squares as position}
-		<Square {position} {gameState} />
+		<Square {position} bind:gameState />
 	{/each}
 </div>
