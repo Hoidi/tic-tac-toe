@@ -35,7 +35,7 @@
 			gameState.isGameOver = true;
 			setTimeout(function () {
 				alert('Player ' + winningPlayer + ' has won!');
-			}, 100);
+			}, 200);
 			return;
 		}
 
@@ -43,7 +43,7 @@
 			gameState.isGameOver = true;
 			setTimeout(function () {
 				alert("It's a tie!");
-			}, 100);
+			}, 200);
 			return;
 		}
 
