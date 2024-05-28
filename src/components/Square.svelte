@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { areThereEmptySquares, hasAnyoneWon } from '../utils';
-	import { type GameState, type SquareState } from '../types';
+	import { type GameState } from '../types';
 	import Empty from './squareStates/Empty.svelte';
 	import O from './squareStates/O.svelte';
 	import X from './squareStates/X.svelte';
@@ -8,49 +7,9 @@
 	export let position = 0;
 	export let gameState: GameState;
 	$: squareState = gameState.squareStates[position];
-
-	const flip = () => {
-		const playersSymbol: SquareState = gameState.currentPlayer;
-
-		if (squareState === playersSymbol) {
-			return;
-		}
-
-		switch (squareState) {
-			case 'X':
-			case 'O':
-				if (areThereEmptySquares(gameState)) {
-					return;
-				}
-			case 'Empty':
-				gameState.squareStates[position] = playersSymbol;
-				break;
-		}
-
-		const winningPlayer = hasAnyoneWon(gameState.squareStates);
-		if (winningPlayer) {
-			gameState.isGameOver = true;
-			setTimeout(function () {
-				alert('Player ' + winningPlayer + ' has won!');
-			}, 100);
-			return;
-		}
-
-		if (!areThereEmptySquares(gameState)) {
-			gameState.isGameOver = true;
-			setTimeout(function () {
-				alert("It's a tie!");
-			}, 100);
-			return;
-		}
-
-		gameState.currentPlayer = gameState.currentPlayer === 'X' ? 'O' : 'X';
-	};
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="w-full aspect-square" on:click={flip}>
+<div class="w-full aspect-square">
 	{#if squareState === 'X'}
 		<X />
 	{:else if squareState === 'O'}
