@@ -33,17 +33,11 @@
 		const winningPlayer = hasAnyoneWon(gameState.squareStates);
 		if (winningPlayer) {
 			gameState.isGameOver = true;
-			setTimeout(function () {
-				alert('Player ' + winningPlayer + ' has won!');
-			}, 200);
 			return;
 		}
 
 		if (!areThereEmptySquares(gameState)) {
 			gameState.isGameOver = true;
-			setTimeout(function () {
-				alert("It's a tie!");
-			}, 200);
 			return;
 		}
 
