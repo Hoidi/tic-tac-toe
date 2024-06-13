@@ -7,7 +7,6 @@
 	export let gameState: GameState;
 
 	const flip = (position: number) => {
-		console.log(position);
 		if (gameState.isGameOver) {
 			return;
 		}
