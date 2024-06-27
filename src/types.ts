@@ -5,7 +5,8 @@ export type SquareState = Player | 'Empty';
 const initalGameState: GameState = {
 	squareStates: ['Empty', 'Empty', 'Empty', 'Empty', 'Empty', 'Empty', 'Empty', 'Empty', 'Empty'],
 	currentPlayer: 'X',
-	isGameOver: false
+	isGameOver: false,
+	winningPlayer: undefined
 };
 Object.freeze(initalGameState);
 
@@ -17,4 +18,5 @@ export type GameState = {
 	squareStates: SquareState[];
 	currentPlayer: Player;
 	isGameOver: boolean;
+	winningPlayer?: Player;
 };

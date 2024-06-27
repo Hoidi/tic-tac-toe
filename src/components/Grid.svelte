@@ -32,6 +32,7 @@
 		const winningPlayer = hasAnyoneWon(gameState.squareStates);
 		if (winningPlayer) {
 			gameState.isGameOver = true;
+			gameState.winningPlayer = winningPlayer;
 			return;
 		}
 
