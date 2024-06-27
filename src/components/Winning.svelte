@@ -5,10 +5,10 @@
 	export let gameState: GameState;
 </script>
 
-<div class="flex justify-center items-center text-slate-200 w-full h-full">
+<div class="flex justify-center items-center text-slate-200 w-full h-full backdrop-blur-sm">
 	{#if gameState.isGameOver}
 		<div class="flex flex-col justify-center">
-			<div class="w-full my-12 text-7xl font-bold font-sans backdrop-blur-sm">
+			<div class="w-full my-12 text-7xl font-bold font-sans">
 				{#if gameState.winningPlayer}
 					Player {gameState.winningPlayer} won
 				{:else}
