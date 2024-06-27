@@ -1,11 +1,16 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import type { GameState } from '../types';
 	import Replay from './Replay.svelte';
 
 	export let gameState: GameState;
 </script>
 
-<div class="flex justify-center items-center text-slate-200 w-full h-full backdrop-blur-sm">
+<div
+	class="flex justify-center items-center
+	text-slate-200 w-full h-full backdrop-blur-sm"
+	transition:fade={{ delay: 50, duration: 250 }}
+>
 	{#if gameState.isGameOver}
 		<div class="flex flex-col justify-center">
 			<div class="w-full my-12 text-7xl font-bold font-sans">
