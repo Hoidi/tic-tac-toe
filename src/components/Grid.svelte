@@ -24,6 +24,7 @@
 				if (areThereEmptySquares(gameState)) {
 					return;
 				}
+				break;
 			case 'Empty':
 				gameState.squareStates[position] = playersSymbol;
 				break;
@@ -49,7 +50,7 @@
 	{#each squares as position}
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div on:click={(_) => flip(position)}>
+		<div on:click={() => flip(position)}>
 			<Square {position} bind:gameState />
 		</div>
 	{/each}
